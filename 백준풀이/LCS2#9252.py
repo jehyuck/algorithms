@@ -14,7 +14,7 @@ for i in range(1,alen+1):
     for j in range(1,blen+1):
         #같을 시 길이를 대각선 위의 것으로 추가한다.
         if a_Word[i-1] == b_Word[j-1]:
-            dp[i][j] = dp[i-1][j-1] + a_Word[i-1]
+            dp[i][j] = "".join([dp[i-1][j-1],a_Word[i-1]])
         else:
             #문제 조건에서 아무거나 출력하라 하였기 때문에
             #등호의 종류는 >, >= 상관없음
@@ -22,6 +22,7 @@ for i in range(1,alen+1):
                 dp[i][j] = dp[i][j-1]
             else:
                 dp[i][j] = dp[i-1][j]
+
 #출력
 print(len(dp[-1][-1]),dp[-1][-1],sep="\n")
 
