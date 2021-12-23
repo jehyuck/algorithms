@@ -8,6 +8,8 @@ input = sys.stdin.readline
 V, E = list(map(int, input().split()))
 K = int(input())
 
+dist[K] = 0
+#간선들을 전부 탐색 시 끝낸다.
 dist = [INF] * (V+1)
 edges = [[] for i in range(V + 1)]
 heap = []
@@ -18,8 +20,6 @@ for i in range(E):
     edges[s].append([w, d])
 
 h.heappush(heap,[0,K])
-dist[K] = 0
-#간선들을 전부 탐색 시 끝낸다.
 while heap:
     w, crt = h.heappop(heap)
 
