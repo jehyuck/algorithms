@@ -1,4 +1,30 @@
 def solution(a):
+    answer = 0
+
+    dp_left = [0] * len(a)
+    dp_right = [0] * len(a)
+
+    dp_left[0] = a[0]
+    dp_right[-1] = a[-1]
+
+    for i in range(1, len(a)):
+        dp_left[i] = a[i]
+        if dp_left[i] > dp_left[i - 1]:
+            dp_left[i] = dp_left[i - 1]
+
+    for i in range(len(a) - 2, -1, -1):
+        dp_right[i] = a[i]
+        if dp_right[i] > dp_right[i + 1]:
+            dp_right[i] = dp_right[i + 1]
+
+    for i in range(len(a)):
+        if a[i] == dp_left[i] or a[i] == dp_right[i]:
+            answer += 1
+
+    return answer
+
+
+def solution1(a):
     answer = set()
     N = len(a)
     n = N - 1
