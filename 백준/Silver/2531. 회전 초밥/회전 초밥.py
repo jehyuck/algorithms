@@ -14,10 +14,8 @@ def solution():
 
     for i in range(len(board) - k):
         temp = set(board[i:i + k])
-        if c in temp:
-            answer = max(answer, len(temp))
-        else:
-            answer = max(answer, len(temp) + 1)
+        temp.add(c)
+        answer = max(answer, len(temp))
     return answer
 
 
