@@ -1,0 +1,10 @@
+-- 코드를 작성해주세요
+SELECT A.ID, CASE 
+                WHEN RANKED = 1 THEN "CRITICAL"
+                WHEN RANKED = 2 THEN "HIGH"
+                WHEN RANKED = 3 THEN "MEDIUM"
+                ELSE "LOW"
+            END AS COLONY_NAME
+FROM (SELECT ID, NTILE(4) OVER(ORDER BY SIZE_OF_COLONY DESC) AS RANKED 
+      FROM ECOLI_DATA) AS A
+ORDER BY ID ASC
